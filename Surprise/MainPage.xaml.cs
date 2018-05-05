@@ -26,5 +26,35 @@ namespace Surprise
         {
             this.InitializeComponent();
         }
+
+        private void TheNaviGate_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var i = args.SelectedItem as NavigationViewItem;
+            switch (i.Tag)
+            {
+
+                case "WelcomePage":
+                    TheNaviGate.Header = "Welcome to Surprise!";
+                    MyFrame.Navigate(typeof(Welcome_Page));
+                    break;
+
+                case "AddPage":
+                    TheNaviGate.Header = "Show me some ideas";
+                    MyFrame.Navigate(typeof(Add_Page));
+                    break;
+
+                case "EditPage":
+                    TheNaviGate.Header = "Let me see..";
+                    MyFrame.Navigate(typeof(Manage_Page));
+                    break;
+            }
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            TheNaviGate.Header = "Welcome to Surprise";
+            MyFrame.Navigate(typeof(Welcome_Page));
+        }
+
     }
 }

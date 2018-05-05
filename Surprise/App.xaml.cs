@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
+using Surprise.Library;
 
 namespace Surprise
 {
@@ -30,6 +32,10 @@ namespace Surprise
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            using (var db = new Model())
+            {
+                db.Database.Migrate();
+            }
         }
 
         /// <summary>

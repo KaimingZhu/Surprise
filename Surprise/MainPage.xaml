@@ -5,9 +5,30 @@
     xmlns:local="using:Surprise"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Loaded="Grid_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <NavigationView IsSettingsVisible="False" Name="TheNaviGate" Header="Welcome to Surprise!" SelectionChanged="TheNaviGate_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Hello" Name="Welcome" Tag="WelcomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE734;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator/>
+                <NavigationViewItem Content="Something New" Name="Add" Tag="AddPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xED15;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Review" Name="Edit" Tag="EditPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xED1E;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Frame Name="MyFrame"/>
+        </NavigationView>
     </Grid>
 </Page>
