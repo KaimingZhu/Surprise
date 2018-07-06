@@ -16,6 +16,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.EntityFrameworkCore;
 using Surprise.Library;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 
 namespace Surprise
 {
@@ -87,6 +90,41 @@ namespace Surprise
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+        }
+
+        protected async override void OnActivated(IActivatedEventArgs args)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if(rootFrame == null)
+            {
+                rootFrame = new Frame();
+
+                Window.Current.Content = rootFrame;
+            }
+
+            if(args.Kind == ActivationKind.StartupTask)
+            {
+                var startupArgs = args as StartupTaskActivatedEventArgs;
+            }
+
+            rootFrame.Navigate(typeof(MainPage), args.Kind);
+
+            Window.Current.Activate();
+
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(StartUp_Page), null);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+
         }
 
         /// <summary>

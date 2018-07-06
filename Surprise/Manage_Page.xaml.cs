@@ -17,6 +17,7 @@ using Surprise.Library;
 using Surprise.UWPMessage;
 using Windows.Storage;
 using Windows.UI.Composition;
+using Windows.ApplicationModel;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -44,6 +45,7 @@ namespace Surprise
              *      bug : to get the selected item - refer to the label 
              * 
              * **/
+
             using (var db = new Model())
             {
                 selected_items = new List<SupriseMessageClass_ForUWP>();
@@ -137,6 +139,8 @@ namespace Surprise
         {
             MessageList.SelectedItems.Clear();
         }
+
+
     }
 }
 

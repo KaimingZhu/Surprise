@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,7 @@ namespace Surprise
         public MainPage()
         {
             this.InitializeComponent();
+            StartUp();
         }
 
         private void TheNaviGate_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -49,7 +51,22 @@ namespace Surprise
                     break;
             }
         }
-
+        async private void StartUp()
+        {
+            var startupTask = await StartupTask.GetAsync("Surprise");
+            switch (startupTask.State)
+            {
+                case StartupTaskState.Disabled:
+                    StartupTaskState newState = await startupTask.RequestEnableAsync();
+                    break;
+                case StartupTaskState.DisabledByUser:
+                    break;
+                case StartupTaskState.DisabledByPolicy:
+                    break;
+                case StartupTaskState.Enabled:
+                    break;
+            }
+        }
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             TheNaviGate.Header = "Welcome to Surprise";

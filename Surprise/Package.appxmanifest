@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+<Package 
+	xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+	xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+	xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+	xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+	IgnorableNamespaces="uap mp uap5">
   <Identity Name="f394b4f1-716a-424b-ae42-60352220a0aa" Publisher="CN=Administrator" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="f394b4f1-716a-424b-ae42-60352220a0aa" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -20,6 +25,17 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+		<uap5:Extension
+			Category="windows.startupTask"
+			EntryPoint="Surprise.App"
+			Executable="Surprise.exe">
+		<uap5:StartupTask
+			DisplayName="Surprise"
+			Enabled="false"
+			TaskId="Surprise"/>
+		</uap5:Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

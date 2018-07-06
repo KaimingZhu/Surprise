@@ -105,6 +105,9 @@
       <DependentUpon>Manage_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartUp_Page.xaml.cs">
+      <DependentUpon>StartUp_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SurpriseMessageClass_ForUWP.cs" />
     <Compile Include="Welcome_Page.xaml.cs">
       <DependentUpon>Welcome_Page.xaml</DependentUpon>
@@ -143,6 +146,10 @@
     <Page Include="Manage_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartUp_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Welcome_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
